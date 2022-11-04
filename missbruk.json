@@ -1,0 +1,19 @@
+{
+
+  "description": "Räknar ut apk på drycker i systembolagets sortiment.",
+  "manifest_version": 2,
+  "name": "APK_Systembolaget",
+  "version": "0.1",
+  "homepage_url": "https://github.com/mdn/webextensions-examples/blob/master/borderify/manifest.json",
+  "icons": {
+    "48": "icons/border-48.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.systembolaget.se/*"],
+      "js": ["alkoholist.js"]
+    }
+  ]
+
+}
