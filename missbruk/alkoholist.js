@@ -12,9 +12,15 @@ let getData = (root) => {
     let price = root.childNodes[1].textContent;
     let flak = root.parentNode.childNodes[0].textContent;
     
+    if (volume.includes("fl à")) {
+        let split = volume.slice(0, -3).split("fl à");
+        volume = parseFloat(split[0]) * parseFloat(split[1])
+    } else {
+        volume = volume.slice(0, -3) // milliliter
+    }
+
     let pant = price.includes("*");
 
-    volume = volume.slice(0, -3) // milliliter
     percentage = percentage.slice(0, -2).replace(",",".") / 100 // procent
     price = price.replace(/\ |\*|:-/g,"").replace(":",".") // kr
     let isFlak = flak.includes("Öl") || flak.includes("Cider") || flak.includes("Blanddryck")
