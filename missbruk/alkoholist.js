@@ -33,6 +33,8 @@ let apkTemplate =
 
 let apkToColor = (apk) => {
     if (apk > 2) {
+        return ["#ff8a3d", "#2d2926"];
+    } else if (apk > 1) {
         return ["#5caa7f", "#ffffff"];
     } else {
         return ["cdead5", "#095741"];
@@ -58,8 +60,30 @@ let calculate = (element) => {
         );
 }
 
+
+let itemClassName = null;
+
+let getItemClassName = () => {
+    console.log(document.querySelector("[display=grid]").querySelector("[id^=tile]"))
+
+    let pre = document.querySelector("[display=grid]").querySelector("[id^=tile]").childNodes[0]
+
+    if (pre.childNodes.length == 2) {
+        pre = pre.childNodes[0]
+    } else {
+        pre = pre.childNodes[1]
+    }
+
+
+    return pre.childNodes[0].childNodes[1].childNodes[2].className;
+}
+
 let sortiment = () => {
-    let all = document.getElementsByClassName("css-1d9u16r e3whs8q0")
+    if (itemClassName == null) {
+        itemClassName = getItemClassName();
+    }
+    let all = document.getElementsByClassName(itemClassName) 
+    //"css-1d9u16r e3whs8q0"
     for(let element of all) {
         if (!checkDone(element)) {
             console.log(element);
