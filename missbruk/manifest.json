@@ -4,6 +4,9 @@
   "name": "Missbruk - Systembolagets APK",
   "version": "0.1",
   "homepage_url": "https://github.com/antonnyst/aa-lule",
+  "icons": {
+    "96": "icons/missbruk-96.png"
+  },
   "content_scripts": [
     {
       "matches": ["*://*.systembolaget.se/*"],

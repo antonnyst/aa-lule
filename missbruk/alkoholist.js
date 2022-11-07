@@ -34,7 +34,7 @@ let flakPrisTemplate =
         </div>
         <div height=\"24\" class=\"css-3qi0zm e1fve3pg0\" style="background-color: {COLOR}; float:right">
             <p color=\"green500\" class=\"css-15hgqif e1fve3pg1\" style="color: {TCOLOR}">
-                FLAKPRIS: {FLAKPRIS}:-*
+                FLAKPRIS: {FLAKPRIS}*
             </p>
         </div>
     </div>`;
@@ -65,18 +65,16 @@ let calculate = (element) => {
     let flakPris = price * 24;
     
     let template = document.createElement('template');
-    [color, tcolor] = apkToColor(apk)
-    let chosenTemplate = apkTemplate
-    if (isFlak) {
-        chosenTemplate = flakPrisTemplate
-    }
+    [color, tcolor] = apkToColor(apk);
+    let chosenTemplate = isFlak ? flakPrisTemplate : apkTemplate;
+
     template.innerHTML = chosenTemplate
         .replace("{APK}", apk.toFixed(3))
+        .replace("{FLAKPRIS}", (flakPris.toFixed(1).replace(".",":")+"0").replace("00","-"))
         .replaceAll("{COLOR}", color)
-        .replaceAll("{TCOLOR}", tcolor)
-        .replace("{FLAKPRIS}", flakPris.toFixed(0));
+        .replaceAll("{TCOLOR}", tcolor);
+
     let apkElement = template.content.firstChild;
-    
     element.parentNode.insertBefore(
         apkElement, 
         element.parentNode.children[2]
@@ -96,7 +94,6 @@ let getItemClassName = () => {
     } else {
         pre = pre.childNodes[1]
     }
-
 
     return pre.childNodes[0].childNodes[1].childNodes[2].className;
 }
