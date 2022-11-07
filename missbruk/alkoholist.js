@@ -1,4 +1,4 @@
-llet checkDone = (element) => {
+let checkDone = (element) => {
     return element.processed == true;
 }
 
@@ -11,12 +11,11 @@ let getData = (root) => {
     let percentage = vol_perc_element.childNodes[2].textContent;
     let price = root.childNodes[1].textContent;
     let flak = root.parentNode.childNodes[0].textContent;
-
-    let isFlak = flak.includes("Öl") || flak.includes("Cider") || flak.includes("Blanddryck")
     
     volume = volume.slice(0, -3) // milliliter
     percentage = percentage.slice(0, -2).replace(",",".") / 100 // procent
     price = price.replace(/\ |\*|:-/g,"").replace(":",".") // kr
+    let isFlak = flak.includes("Öl") || flak.includes("Cider") || flak.includes("Blanddryck")
 
     return [
         parseFloat(volume), 
@@ -27,22 +26,22 @@ let getData = (root) => {
 }
 
 let flakPrisTemplate = 
-`<div>
-<div height=\"24\" class=\"css-3qi0zm e1fve3pg0\" style="background-color: {COLOR};float:left">
+    `<div>
+        <div height=\"24\" class=\"css-3qi0zm e1fve3pg0\" style="background-color: {COLOR}; float:left">
             <p color=\"green500\" class=\"css-15hgqif e1fve3pg1\" style="color: {TCOLOR}">
                 APK: {APK}
             </p>
         </div>
-<div height=\"24\" class=\"css-3qi0zm e1fve3pg0\" style="background-color: {COLOR}; float:right">
-    <p color=\"green500\" class=\"css-15hgqif e1fve3pg1\" style="color: {TCOLOR}">
-        FLAKPRIS: {flakPris}:-*
-    </p>
-</div>
-</div>`;
+        <div height=\"24\" class=\"css-3qi0zm e1fve3pg0\" style="background-color: {COLOR}; float:right">
+            <p color=\"green500\" class=\"css-15hgqif e1fve3pg1\" style="color: {TCOLOR}">
+                FLAKPRIS: {FLAKPRIS}:-*
+            </p>
+        </div>
+    </div>`;
 
 let apkTemplate = 
     `<div >
-        <div height=\"24\" class=\"css-3qi0zm e1fve3pg0\" style="background-color: {COLOR};float:left">
+        <div height=\"24\" class=\"css-3qi0zm e1fve3pg0\" style="background-color: {COLOR}; float:left">
             <p color=\"green500\" class=\"css-15hgqif e1fve3pg1\" style="color: {TCOLOR}">
                 APK: {APK}
             </p>
@@ -59,9 +58,6 @@ let apkToColor = (apk) => {
     }
 }
 
-
-
-
 let calculate = (element) => {
     [volume, percentage, price, isFlak] = getData(element);
     console.log(volume, percentage, price);
@@ -71,14 +67,14 @@ let calculate = (element) => {
     let template = document.createElement('template');
     [color, tcolor] = apkToColor(apk)
     let chosenTemplate = apkTemplate
-    if (isFlak == true){
+    if (isFlak) {
         chosenTemplate = flakPrisTemplate
     }
     template.innerHTML = chosenTemplate
         .replace("{APK}", apk.toFixed(3))
         .replaceAll("{COLOR}", color)
         .replaceAll("{TCOLOR}", tcolor)
-        .replace("{flakPris}", flakPris.toFixed(0));
+        .replace("{FLAKPRIS}", flakPris.toFixed(0));
     let apkElement = template.content.firstChild;
     
     element.parentNode.insertBefore(
@@ -110,7 +106,6 @@ let sortiment = () => {
         itemClassName = getItemClassName();
     }
     let all = document.getElementsByClassName(itemClassName) 
-    //"css-1d9u16r e3whs8q0"
     for(let element of all) {
         if (!checkDone(element)) {
             console.log(element);
@@ -139,7 +134,5 @@ let runner = () => {
             break;
     }
 }
-
-setInterval(runner,500)
 
 setInterval(runner,500)
