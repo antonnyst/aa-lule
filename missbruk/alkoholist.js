@@ -42,15 +42,40 @@ let getData = (root) => {
     ]
 }
 
+let style = 
+    `<style>
+        .apk1 {
+            display: flex;
+            background-color: rgb(205, 234, 213);
+            margin-top: 12px;
+            height: 24px;
+            -moz-box-align: center;
+            align-items: center;
+            -moz-box-pack: center;
+            justify-content: center;
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+        .apk2 {
+            margin: 0px;
+            font-family: RobotoCondensed-Bold;
+            font-size: 12px;
+            line-height: 1.6;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgb(9, 87, 65);
+        }
+    </style>`;
+
 let flakPrisTemplate = 
     `<div>
-        <div height=\"24\" class=\"css-3qi0zm e1fve3pg0\" style="background-color: {COLOR}; float:left">
-            <p color=\"green500\" class=\"css-15hgqif e1fve3pg1\" style="color: {TCOLOR}">
+        <div height=\"24\" class=\"apk1\" style="background-color: {COLOR}; float:left">
+            <p color=\"green500\" class=\"apk2\" style="color: {TCOLOR}">
                 APK: {APK}
             </p>
         </div>
-        <div height=\"24\" class=\"css-3qi0zm e1fve3pg0\" style="background-color: {COLOR}; float:right">
-            <p color=\"green500\" class=\"css-15hgqif e1fve3pg1\" style="color: {TCOLOR}">
+        <div height=\"24\" class=\"apk1\" style="background-color: {COLOR}; float:right">
+            <p color=\"green500\" class=\"apk2\" style="color: {TCOLOR}">
                 {FLAKPRIS}
             </p>
         </div>
@@ -58,8 +83,8 @@ let flakPrisTemplate =
 
 let apkTemplate = 
     `<div>
-        <div height=\"24\" class=\"css-3qi0zm e1fve3pg0\" style="background-color: {COLOR}; float:left">
-            <p color=\"green500\" class=\"css-15hgqif e1fve3pg1\" style="color: {TCOLOR}">
+        <div height=\"24\" class=\"div1\" style="background-color: {COLOR}; float:left">
+            <p color=\"green500\" class=\"div2\" style="color: {TCOLOR}">
                 APK: {APK}
             </p>
         </div>
@@ -142,7 +167,7 @@ let sortiment = () => {
 }
 
 let produkt = () => {
-
+    
 }
 
 let runner = () => {
@@ -160,5 +185,9 @@ let runner = () => {
             break;
     }
 }
+
+let styleElement = new DOMParser().parseFromString(style, "text/html").firstChild;
+
+document.head.appendChild(styleElement);
 
 setInterval(runner,500)
