@@ -152,6 +152,13 @@ let getItemClassName = () => {
     return pre.childNodes[0].childNodes[1].childNodes[2].className;
 }
 
+let getProductClassName = () => {
+    console.log(document.getElementById("__next").childNodes[5].childNodes[1].childNodes[0].childNodes[1].childNodes[1].childNodes[0].childNodes[1].childNodes[0].childNodes[4].textContent.split("+")[0].replace(":","."));
+
+    let pre = document.querySelector("[display=flex]").querySelector("id^=title").childNodes[0]
+
+    return null
+}
 let sortiment = () => {
     if (itemClassName == null) {
         itemClassName = getItemClassName();
@@ -167,7 +174,9 @@ let sortiment = () => {
 }
 
 let produkt = () => {
-    
+    productClassName = getProductClassName();
+    let all = document.getElementsByClassName(productClassName);
+    console.log(all)
 }
 
 let runner = () => {
