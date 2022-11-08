@@ -2,8 +2,8 @@
   "description": "Räknar ut apk på drycker i systembolagets sortiment.",
   "manifest_version": 2,
   "name": "Missbruk - Systembolagets APK",
-  "version": "0.1",
-  "homepage_url": "https://github.com/antonnyst/aa-lule",
+  "version": "0.2",
+  "homepage_url": "https://github.com/antonnyst/aa-lule/tree/main/missbruk",
   "icons": {
     "96": "icons/missbruk-96.png"
   },
