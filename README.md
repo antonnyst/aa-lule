@@ -1,4 +1,4 @@
 # aa-lule
 
-TODO: -[ ] APK på produkt sida.
-      -[ ] Flak/backpris på produkt sida.
+ TODO : - [ ] APK på produktsida
+          - [ ] Flak/backpris i produktsida
