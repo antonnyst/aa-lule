@@ -1,9 +1,9 @@
 
-let checkDone = (element) => {
+let checkDoneProduktProdukt = (element) => {
   return element.processed == true;
 }
 
-let getData = (root) => {
+let getProduktData = (root) => {
   let vol_perc_element = root.childNodes[0].childNodes.length == 2 ?
      root.childNodes[0].childNodes[1] :
      root.childNodes[0].childNodes[0] 
@@ -101,8 +101,8 @@ let apkToColor = (apk) => {
   }
 }
 
-let calculate = (element) => {
-  [volume, percentage, price, flakInfo] = getData(element);
+let calculateApk = (element) => {
+  [volume, percentage, price, flakInfo] = getProduktData(element);
   console.log(volume, percentage, price);
   let apk = volume * percentage / price;
   
@@ -160,9 +160,9 @@ let produkt = () => {
   }
   let all = document.getElementsByClassName(itemClassName) 
   for(let element of all) {
-      if (!checkDone(element)) {
+      if (!checkDoneProdukt(element)) {
           console.log(element);
-          calculate(element)
+          calculateApk(element)
           element.processed = true;
       }
   }
@@ -173,9 +173,9 @@ let runner = () => {
   if (location != null) {
       location = location[0]
   }
-
+  console.log("hej");
   if(location == "produkt"){
-    produkt();
+    console.log("hej");
   }
 }
 

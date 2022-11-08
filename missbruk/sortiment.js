@@ -173,7 +173,6 @@ let runner = () => {
     if (location != null) {
         location = location[0]
     }
-
     if(location == "sortiment"){
         sortiment();
     }
