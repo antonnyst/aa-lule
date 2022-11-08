@@ -42,9 +42,6 @@ let getData = (root) => {
     ]
 }
 
-let getProductData = (root) => {
-    
-}
 let style = 
     `<style>
         .apk1 {
@@ -138,9 +135,6 @@ let calculate = (element) => {
         );
 }
 
-let calculateProduct = (element) => {
-    [volume, percentage, price, flakInfo] = getProductData(element);
-}
 
 
 let itemClassName = null;
@@ -159,13 +153,6 @@ let getItemClassName = () => {
     return pre.childNodes[0].childNodes[1].childNodes[2].className;
 }
 
-let getProductClassName = () => {
-    console.log();
-
-    let pre = document.getElementById("__next").childNodes[5].childNodes[1].childNodes[0].childNodes[1].childNodes[1].childNodes[0].childNodes[1].childNodes[0]
-
-    return null
-}
 let sortiment = () => {
     if (itemClassName == null) {
         itemClassName = getItemClassName();
@@ -181,9 +168,7 @@ let sortiment = () => {
 }
 
 let produkt = () => {
-    productClassName = getProductClassName();
-    let element = document.getElementsByClassName(productClassName);
-    calculateProduct(element);
+
 }
 
 let runner = () => {
