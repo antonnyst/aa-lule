@@ -10,7 +10,7 @@
   "content_scripts": [
     {
       "matches": ["*://*.systembolaget.se/*"],
-      "js": ["alkoholist.js"]
+      "js": ["sortiment.js, produkt.js"]
     }
   ]
 }
