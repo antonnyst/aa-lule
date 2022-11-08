@@ -83,8 +83,8 @@ let flakPrisTemplate =
 
 let apkTemplate = 
     `<div>
-        <div height=\"24\" class=\"div1\" style="background-color: {COLOR}; float:left">
-            <p color=\"green500\" class=\"div2\" style="color: {TCOLOR}">
+        <div height=\"24\" class=\"apk1\" style="background-color: {COLOR}; float:left">
+            <p color=\"green500\" class=\"apk2\" style="color: {TCOLOR}">
                 APK: {APK}
             </p>
         </div>
