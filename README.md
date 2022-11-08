@@ -1,4 +1,4 @@
 # aa-lule
 
- TODO : - [ ] APK på produktsida
+ MARKUP : - [ ] APK på produktsida
           - [ ] Flak/backpris i produktsida
