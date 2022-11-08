@@ -108,14 +108,14 @@ let calculate = (element) => {
     let isFlak = flakInfo !== "no";
 
     [color, tcolor] = apkToColor(apk);
-    let chosenTemplate = isFlak ? flakPrisTemplate : apkTemplate;
+    let chosenTemplate = isFlak && volume < 1000? flakPrisTemplate : apkTemplate;
 
     let flakString = ""
     if (isFlak) {
         if (flakInfo == "flak") {
             let flakPris = price * 24; 
             flakString = "FLAKPRIS: " + (flakPris.toFixed(1).replace(".",":")+"0").replace("00","-") + "*";
-        } else {
+        } else{
             let flakPris = price * 15;
             flakString = "BACKPRIS: " + (flakPris.toFixed(1).replace(".",":")+"0").replace("00","-");
         }
