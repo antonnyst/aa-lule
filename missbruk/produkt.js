@@ -43,7 +43,7 @@ let getProduktData = (root) => {
   ]
 }
 
-let style = 
+let stylePP = 
   `<style>
       .apk1 {
           display: flex;
@@ -68,7 +68,7 @@ let style =
       }
   </style>`;
 
-let flakPrisTemplate = 
+let flakPrisTemplatePP = 
   `<div>
       <div height=\"24\" class=\"apk1\" style="background-color: {COLOR}; float:left">
           <p color=\"green500\" class=\"apk2\" style="color: {TCOLOR}">
@@ -82,7 +82,7 @@ let flakPrisTemplate =
       </div>
   </div>`;
 
-let apkTemplate = 
+let apkTemplatePP = 
   `<div>
       <div height=\"24\" class=\"apk1\" style="background-color: {COLOR}; float:left">
           <p color=\"green500\" class=\"apk2\" style="color: {TCOLOR}">
@@ -91,7 +91,7 @@ let apkTemplate =
       </div>
   </div>`;
 
-let apkToColor = (apk) => {
+let apkToColorPP = (apk) => {
   if (apk > 2) {
       return ["#ff8a3d", "#2d2926"];
   } else if (apk > 1) {
@@ -101,7 +101,7 @@ let apkToColor = (apk) => {
   }
 }
 
-let calculateApk = (element) => {
+let calculateApkPP = (element) => {
   [volume, percentage, price, flakInfo] = getProduktData(element);
   console.log(volume, percentage, price);
   let apk = volume * percentage / price;
@@ -138,9 +138,9 @@ let calculateApk = (element) => {
 
 
 
-let itemClassName = null;
+let itemClassNamePP = null;
 
-let getItemClassName = () => {
+let getItemClassNamePP = () => {
   console.log(document.querySelector("[display=grid]").querySelector("[id^=tile]"))
 
   let pre = document.querySelector("[display=grid]").querySelector("[id^=tile]").childNodes[0]
@@ -154,7 +154,7 @@ let getItemClassName = () => {
   return pre.childNodes[0].childNodes[1].childNodes[2].className;
 }
 
-let produkt = () => {
+let produktPP = () => {
   if (itemClassName == null) {
       itemClassName = getItemClassName();
   }
@@ -168,19 +168,19 @@ let produkt = () => {
   }
 }
 
-let runner = () => {
+let runnerPP = () => {
   let location = window.location.href.match(/produkt|sortiment/)
   if (location != null) {
       location = location[0]
   }
   console.log("hej");
   if(location == "produkt"){
-    console.log("hej");
+    console.log("hej1");
   }
 }
 
-let styleElement = new DOMParser().parseFromString(style, "text/html").firstChild;
+let styleElementPP = new DOMParser().parseFromString(style, "text/html").firstChild;
 
 document.head.appendChild(styleElement);
 
-setInterval(runner,500)
+setInterval(runnerPP,500)

@@ -139,8 +139,6 @@ let calculate = (element) => {
         );
 }
 
-
-
 let itemClassName = null;
 
 let getItemClassName = () => {
@@ -173,10 +171,7 @@ let sortiment = () => {
 
 let runner = () => {
     let location = window.location.href.match(/produkt|sortiment/)
-    if (location != null) {
-        location = location[0]
-    }
-    if(location == "sortiment"){
+    if (location != null && location[0] == "sortiment") {
         sortiment();
     }
 }
