@@ -15,7 +15,10 @@ let getData = (root) => {
     
     if (volume.includes("fl à")) {
         let split = volume.slice(0, -3).split("fl à");
-        volume = parseFloat(split[0]) * parseFloat(split[1])
+        volume = parseFloat(split[0]) * parseFloat(split[1]);
+    } else if(volume.includes("flaskor a")){
+        let split = volume.slice(0,-3).split("flaskor a");
+        volume = parseFloat(split[0]) * parseFloat(split[1]);
     } else {
         volume = volume.slice(0, -3) // milliliter
     }
