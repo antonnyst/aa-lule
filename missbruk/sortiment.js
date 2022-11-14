@@ -69,16 +69,27 @@ let style =
             text-transform: uppercase;
             color: rgb(9, 87, 65);
         }
+        #apk {
+            float: left;
+        }
+        #flak {
+            float: right;
+        }
+        @media only screen and (max-width: 405px) {
+            #flak { 
+                float: left;
+            }
+        }
     </style>`;
 
 let flakPrisTemplate = 
     `<div>
-        <div height=\"24\" class=\"apk1\" style="background-color: {COLOR}; float:left">
+        <div id="apk" height=\"24\" class=\"apk1\" style="background-color: {COLOR}">
             <p color=\"green500\" class=\"apk2\" style="color: {TCOLOR}">
                 APK: {APK}
             </p>
         </div>
-        <div height=\"24\" class=\"apk1\" style="background-color: {COLOR}; float:right">
+        <div id="flak" height=\"24\" class=\"apk1\" style="background-color: {COLOR}">
             <p color=\"green500\" class=\"apk2\" style="color: {TCOLOR}">
                 {FLAKPRIS}
             </p>
