@@ -82,7 +82,7 @@ let style =
         }
     </style>`;
 
-let flakPrisTemplate = 
+let sortimentFlakTemplate = 
     `<div>
         <div id="apk" height=\"24\" class=\"apk1\" style="background-color: {COLOR}">
             <p color=\"green500\" class=\"apk2\" style="color: {TCOLOR}">
@@ -96,7 +96,7 @@ let flakPrisTemplate =
         </div>
     </div>`;
 
-let apkTemplate = 
+let sortimentTemplate = 
     `<div>
         <div height=\"24\" class=\"apk1\" style="background-color: {COLOR}; float:left">
             <p color=\"green500\" class=\"apk2\" style="color: {TCOLOR}">
@@ -123,7 +123,7 @@ let calculate = (element) => {
     let isFlak = flakInfo !== "no";
 
     [color, tcolor] = apkToColor(apk);
-    let chosenTemplate = isFlak && volume < 1000? flakPrisTemplate : apkTemplate;
+    let chosenTemplate = isFlak && volume < 1000? sortimentFlakTemplate : sortimentTemplate;
 
     let flakString = ""
     if (isFlak) {
@@ -180,7 +180,7 @@ let sortiment = () => {
     }
 }
 
-let runner = () => {
+let sortimentRunner = () => {
     let location = window.location.href.match(/produkt|sortiment/)
     if (location != null && location[0] == "sortiment") {
         sortiment();
@@ -191,4 +191,4 @@ let styleElement = new DOMParser().parseFromString(style, "text/html").firstChil
 
 document.head.appendChild(styleElement);
 
-setInterval(runner,500)
+setInterval(sortimentRunner, 500)
