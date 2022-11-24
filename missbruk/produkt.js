@@ -15,17 +15,7 @@ let getProduktData = (root) => {
     }
     let split = volume.split(" ");
     volume = parseFloat(split[split.length-2]);
-    /*if (volume.includes("fl à")) {
-        let split = volume.slice(0, -3).split("fl à");
-        volume = parseFloat(split[0]) * parseFloat(split[1])
-    } else if(volume.includes("flaskor a")){
-        let split = volume.slice(0,-3).split("flaskor a");
-        volume = parseFloat(split[0]) * parseFloat(split[1]);
-    } else {
-        volume = volume.slice(0, -3) // milliliter
-    }*/
-
-
+    
     let percentage = vol_perc_element.childNodes[2].textContent;
     let price = root.childNodes[4].childNodes[0].textContent;
     let flak = root.childNodes[0].textContent;
@@ -56,12 +46,12 @@ let getProduktData = (root) => {
 
 let produktFlakTemplate = 
   `<div style="padding-bottom: 10px">
-      <div height=\"24\" class=\"apk1\" style="background-color: {COLOR}; float:left; height: 40px; padding-left: 12px; padding-right: 12px">
+      <div id="apk" height=\"24\" class=\"apk1\" style="background-color: {COLOR}; height: 40px; padding-left: 12px; padding-right: 12px">
           <p color=\"green500\" class=\"apk2\" style="color: {TCOLOR}; font-size: 18px">
               APK: {APK}
           </p>
       </div>
-      <div height=\"24\" class=\"apk1\" style="background-color: {COLOR}; float:right; height: 40px; padding-left: 12px; padding-right: 12px">
+      <div id="flak" height=\"24\" class=\"apk1\" style="background-color: {COLOR}; height: 40px; padding-left: 12px; padding-right: 12px">
           <p color=\"green500\" class=\"apk2\" style="color: {TCOLOR}; font-size: 18px">
               {FLAKPRIS}
           </p>
@@ -70,7 +60,7 @@ let produktFlakTemplate =
 
 let produktTemplate = 
   `<div style="padding-bottom: 10px">
-      <div height=\"24\" class=\"apk1\" style="background-color: {COLOR}; float:left; height: 40px; padding-left: 12px; padding-right: 12px">
+      <div id="apk" height=\"24\" class=\"apk1\" style="background-color: {COLOR}; height: 40px; padding-left: 12px; padding-right: 12px">
           <p color=\"green500\" class=\"apk2\" style="color: {TCOLOR}; font-size: 18px">
               APK: {APK}
           </p>
