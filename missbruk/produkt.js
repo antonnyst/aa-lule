@@ -1,47 +1,55 @@
-
 let checkDoneProduktPage = (element) => {
-  return element.processed == true;
+    if (element.doneURI == null) {
+        return "never";
+    } else if (element.doneURI == window.location.href) {
+        return "done";
+    } else {
+        return "changed"
+    }
 }
 
 let getProduktData = (root) => {
+    console.log(root);
     let vol_perc_element = root.childNodes[3].childNodes[0];
   
     let volume_element = vol_perc_element.childNodes[0];
     let volume = "";
-    if (volume_element.tagName == "select") {
+    let percentage = "";
+    if (volume_element.tagName == "SELECT") {
         volume = volume_element.childNodes[0].textContent;
+        percentage = vol_perc_element.childNodes[1].textContent;
     } else {
         volume = volume_element.textContent;
+        percentage = vol_perc_element.childNodes[2].textContent;
     }
     let split = volume.split(" ");
     volume = parseFloat(split[split.length-2]);
     
-    let percentage = vol_perc_element.childNodes[2].textContent;
     let price = root.childNodes[4].childNodes[0].textContent;
     let flak = root.childNodes[0].textContent;
   
     
-  let pant = root.childNodes[4].childNodes[2].childNodes.length == 2;
+    let pant = root.childNodes[4].childNodes[2].childNodes.length == 2;
 
-  percentage = percentage.slice(0, -2).replace(",",".") / 100 // procent
-  price = price.replace(/\ |\*|:-/g,"").replace(":",".") // kr
-  let isFlak = flak.includes("Öl") || flak.includes("Cider") || flak.includes("Blanddryck")
+    percentage = percentage.slice(0, -2).replace(",",".") / 100 // procent
+    price = price.replace(/\ |\*|:-/g,"").replace(":",".") // kr
+    let isFlak = flak.includes("Öl") || flak.includes("Cider") || flak.includes("Blanddryck")
 
-  let flakInfo = "no"
-  if (isFlak) {
-      if (pant) {
-          flakInfo = "flak"
-      } else {
-          flakInfo = "back"
-      }
-  }
+    let flakInfo = "no"
+    if (isFlak) {
+        if (pant) {
+            flakInfo = "flak"
+        } else {
+            flakInfo = "back"
+        }
+    }
 
-  return [
-      parseFloat(volume), 
-      parseFloat(percentage), 
-      parseFloat(price),
-      flakInfo
-  ]
+    return [
+        parseFloat(volume), 
+        parseFloat(percentage), 
+        parseFloat(price),
+        flakInfo
+    ]
 }
 
 let produktFlakTemplate = 
@@ -135,7 +143,7 @@ let getProduktElement = () => {
     .childNodes[1].childNodes[0].childNodes[1].childNodes[1]
     .childNodes[0];
     
-    if (pre.childNodes.length > 2) {
+    if (pre.childNodes.length >= 2) {
         pre = pre.childNodes[1];
     } else {
         pre = pre.childNodes[0];
@@ -146,11 +154,18 @@ let getProduktElement = () => {
 
 let produkt = () => {
     let element = getProduktElement();
-    if (!checkDoneProduktPage(element)) {
-        //element.style["background-color"] = "red"
-        console.log("Calculating...")
-        calculateProdukt(element)
-        element.processed = true;
+
+    let check = checkDoneProduktPage(element);
+    console.log(check)
+    switch (check) {
+        case "changed":
+            // Remove old apk div
+            element.childNodes[4].remove();
+        case "never": 
+            console.log("Checking...")
+            calculateProdukt(element);
+            element.doneURI = window.location.href;
+            break;
     }
 }
 
