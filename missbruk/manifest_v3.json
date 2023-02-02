@@ -10,7 +10,7 @@
   "content_scripts": [
     {
       "matches": ["*://*.systembolaget.se/*"],
-      "js": ["code/sortiment.js", "code/produkt.js"]
+      "js": ["scripts/sortiment.js", "scripts/produkt.js"]
     }
   ]
 }

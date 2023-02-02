@@ -15,6 +15,6 @@ case $1 in
         ;;
 esac
 
-zip -r missbruk.zip manifest.json code/ icons/
+zip -r missbruk.zip manifest.json scripts/ icons/
 
 rm manifest.json
