@@ -1,2 +1,2 @@
 # missbruk
-Firefox extension för att visa APK
+Webbläsartillägg för att visa APK och förbättra systembolagets hemsida
