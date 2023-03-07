@@ -2,7 +2,7 @@
   "description": "Räknar ut apk och förbättrar systembolagets hemsida.",
   "manifest_version": 2,
   "name": "Missbruk - Systembolagets APK",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "homepage_url": "https://github.com/antonnyst/aa-lule/tree/main/missbruk",
   "icons": {
     "96": "icons/missbruk-96.png"
