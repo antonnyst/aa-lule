@@ -11,7 +11,7 @@ let checkDoneProduktPage = (element) => {
 let getProduktData = (root) => {
     console.log(root);
     let vol_perc_element = root.childNodes[3].childNodes[0];
-  
+
     let volume_element = vol_perc_element.childNodes[0];
     let volume = "";
     let percentage = "";
@@ -20,7 +20,7 @@ let getProduktData = (root) => {
         percentage = vol_perc_element.childNodes[1].textContent;
     } else {
         volume = volume_element.textContent;
-        percentage = vol_perc_element.childNodes[2].textContent;
+        percentage = vol_perc_element.childNodes[4].textContent;
     }
     let split = volume.split(" ");
     volume = parseFloat(split[split.length-2]);
@@ -30,8 +30,7 @@ let getProduktData = (root) => {
   
     
     let pant = root.childNodes[4].childNodes[2].childNodes.length == 2;
-
-    percentage = percentage.slice(0, -2).replace(",",".") / 100 // procent
+    percentage = percentage.slice(0, -7).replace(",",".") / 100 // procent
     price = price.replace(/\ |\*|:-/g,"").replace(":",".") // kr
     let isFlak = flak.includes("Öl") || flak.includes("Cider") || flak.includes("Blanddryck")
 
