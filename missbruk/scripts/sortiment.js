@@ -28,7 +28,7 @@ let getData = (root) => {
 
     let pant = price.includes("*");
 
-    percentage = percentage.slice(0, -2).replace(",",".") / 100 // procent
+    percentage = percentage.slice(0, -7).replace(",",".") / 100 // procent
     price = price.replace(/\ |\*|:-/g,"").replace(":",".") // kr
     let isFlak = flak.includes("Öl") || flak.includes("Cider") || flak.includes("Blanddryck")
 
