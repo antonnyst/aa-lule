@@ -11,17 +11,20 @@ let checkDoneProduktPage = (element) => {
 let getProduktData = (root) => {
     console.log(root);
     let vol_perc_element = root.childNodes[3].childNodes[0];
-
-    let volume_element = vol_perc_element.childNodes[0];
     let volume = "";
     let percentage = "";
-    if (volume_element.tagName == "SELECT") {
+
+    if (vol_perc_element.childNodes.length == 5) {
+        // Regular
+        volume = vol_perc_element.childNodes[2].textContent;
+        percentage = vol_perc_element.childNodes[4].textContent;
+    } else {
+        // Dropdown
+        let volume_element = vol_perc_element.childNodes[0];
         volume = volume_element.childNodes[0].textContent;
         percentage = vol_perc_element.childNodes[1].textContent;
-    } else {
-        volume = volume_element.textContent;
-        percentage = vol_perc_element.childNodes[4].textContent;
     }
+    
     let split = volume.split(" ");
     volume = parseFloat(split[split.length-2]);
     
