@@ -4,13 +4,11 @@ let checkDone = (element) => {
 }
 
 let getData = (root) => {
-    let vol_perc_element = root.childNodes[0].childNodes.length == 2 ?
-       root.childNodes[0].childNodes[1] :
-       root.childNodes[0].childNodes[0] 
+    let vol_perc_element = root.childNodes[0];
     
     let volume = vol_perc_element.childNodes[1].textContent;
     let percentage = vol_perc_element.childNodes[2].textContent;
-    let price = root.childNodes[1].textContent;
+    let price = root.childNodes[2].textContent;
     let flak = root.parentNode.childNodes[0].textContent;
     
     if (volume.includes("fl à")) {
