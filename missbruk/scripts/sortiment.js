@@ -20,6 +20,9 @@ let getData = (root) => {
     } else if(volume.includes("påsar à")){
         let split = volume.slice(0,-3).split("påsar à");
         volume = parseFloat(split[0]) * parseFloat(split[1]);
+    } else if(volume.includes("burkar à")){
+        let split = volume.slice(0,-2).split("burkar à");
+        volume = parseFloat(split[0]) * parseFloat(split[1]);
     } else {
         volume = volume.replace(" ", "");
         volume = volume.slice(0, -2) // milliliter
