@@ -133,11 +133,18 @@ let calculate = (element) => {
     let flakString = ""
     if (isFlak) {
         if (flakInfo == "flak") {
-            let flakPris = price * 24; 
-            flakString = "FLAKPRIS: " + (flakPris.toFixed(1).replace(".",":")+"0").replace("00","-") + "*";
+            let flakPris = (Math.round(price * 24 * 100) / 100).toFixed(2);
+            flakString = "FLAKPRIS: " + flakPris.replace(".",":");
+            if (flakString.endsWith("00")) {
+                flakString = flakString.substring(0,flakString.length-2) + "-";
+            }
+            flakString += "*";
         } else{
-            let flakPris = price * 15;
-            flakString = "BACKPRIS: " + (flakPris.toFixed(1).replace(".",":")+"0").replace("00","-");
+            let flakPris = (Math.round(price * 24 * 100) / 100).toFixed(2);
+            flakString = "FLAKPRIS: " + flakPris.replace(".",":");
+            if (flakString.endsWith("00")) {
+                flakString = flakString.substring(0,flakString.length-2) + "-";
+            }
         }
     }
 
