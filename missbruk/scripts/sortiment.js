@@ -21,7 +21,8 @@ let getData = (root) => {
         let split = volume.slice(0,-3).split("påsar à");
         volume = parseFloat(split[0]) * parseFloat(split[1]);
     } else {
-        volume = volume.slice(0, -3) // milliliter
+        volume = volume.replace(" ", "");
+        volume = volume.slice(0, -2) // milliliter
     }
 
     let pant = price.includes("*");
